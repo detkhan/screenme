@@ -9,10 +9,9 @@ class adduser
 //var_dump($pack_data);
 public function registration($username,$password)
 {
-  echo "test";
   $join_date=date("Y-m-d H:i:s");
   $clsMyDB = new MyDatabase();
-  $strCondition2 = "SELECT  *  FROM  user WHERE  `username` ='$username' and `password` ='$password'";
+  $strCondition2 = "SELECT  *  FROM  user WHERE  `username` ='$username'";
 
   $objSelect2 = $clsMyDB->fncSelectRecord($strCondition2);
 

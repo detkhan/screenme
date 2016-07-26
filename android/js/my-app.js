@@ -2,6 +2,7 @@
 var myApp = new Framework7();
 var $$ = Dom7;
 var url="http://127.0.0.1/screenme/api/";
+data_url="";
 function init(){
 
   // Init slider and store its instance in mySwiper variable
@@ -39,35 +40,28 @@ var re_password=$("#txt_re_password").val();
 var data_validate=validateLogin(username,password,re_password);
 if(data_validate){
   if(password==re_password){
-  $('#re_sign_up').css('display', 'none');
-  $('#re_password').css('display', 'none');
-  $('#sign_in').css('display', 'block');
-  $('#sign_up').css('display', 'block');
   var page="registration.php";
   var pack_data={username:username,password:password};
-  //var getDataUrl=sentDataUrl(url,page,pack_data);
-
   var feedhost=url+page+'?jsoncallback=?';
-  var getmsg;
-  var data_url;
-  /*
-    $.getJSON( feedhost, {
-      pack_data:pack_data,
-      format: 'json'
-      })
-        .done(function( data ) {
-  $.each(data, function(i, field){
-    getmsg=data[i].msg_check;
-  });
-      });
-      alert(getmsg);
-      */
+  $.getJSON( feedhost, {
+    pack_data:pack_data,
+    format: 'json'
+    })
+      .done(function( data ) {
+$.each(data, function(i, field){
+  console.log(data[i].msg_check);
+  if(data[i].msg_check=="yes"){
+    $('#re_sign_up').css('display', 'none');
+    $('#re_password').css('display', 'none');
+    $('#sign_in').css('display', 'block');
+    $('#sign_up').css('display', 'block');
+      myApp.alert('Complete', 'Registration!');
+  }else{
+      myApp.alert('Have User already', 'Not Registration!');
+  }
 
-      $$.get(feedhost, {pack_data:pack_data}, function (data) {
-      console.log(data);
+});
     });
-
-  myApp.alert('Complete', 'Registration!');
   }else{
   myApp.alert('กรอกpasswordกับre password ไม่ตรงกัน', 'แจ้งเตือน!');
   }
@@ -85,20 +79,4 @@ function validateLogin(username,password,re_password) {
   myApp.alert('กรุณากรอกข้อมูลให้ครบ', 'แจ้งเตือน!');
   }
   return validate_data;
-}
-
-function sentDataUrl(url,page,pack_data) {
-var feedhost=url+page+'?jsoncallback=?';
-
-var data_url;
-  $.getJSON( feedhost, {
-    pack_data:pack_data,
-    format: 'json'
-    })
-      .done(function( data ) {
-$.each(data, function(i, field){
-  alert(data[i].msg_check);
-});
-    });
-return data_url;
 }
