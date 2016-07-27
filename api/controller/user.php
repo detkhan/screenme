@@ -1,7 +1,7 @@
 <?php
-require_once("model/database.php");
+require_once("../model/database.php");
 
-class adduser
+class user
 {
 
 
@@ -12,7 +12,6 @@ public function registration($username,$password)
   $join_date=date("Y-m-d H:i:s");
   $clsMyDB = new MyDatabase();
   $strCondition2 = "SELECT  *  FROM  user WHERE  `username` ='$username'";
-
   $objSelect2 = $clsMyDB->fncSelectRecord($strCondition2);
 
   if(!$objSelect2)
@@ -26,6 +25,23 @@ public function registration($username,$password)
 
   }
   return $objInsert;
-}//unction Registration
+}//function Registration
+
+
+public function login($username,$password)
+{
+  $clsMyDB = new MyDatabase();
+  $strCondition2 = "SELECT  *  FROM  user WHERE  `username` ='$username' and `password` ='$password'";
+  $objSelect2 = $clsMyDB->fncSelectRecord($strCondition2);
+  if(!$objSelect2)
+  {
+    $objInsert="no";
+  }
+  else{
+  $objInsert="yes";
+
+  }
+  return $objInsert;
+}//function login
 }//class
  ?>
