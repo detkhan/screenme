@@ -3,7 +3,9 @@ var myApp = new Framework7();
 var $$ = Dom7;
 var url="http://inwdog.com/screenme/api/view/";
 data_url="";
-var mainView = myApp.addView('.view-main');
+var mainView = myApp.addView('.view-main', {
+    domCache: true //enable inline pages
+});
 
 var test=1;
 
@@ -82,6 +84,8 @@ function screen_login()
 {
 $('#re_password').css('display', 'none');
 $('#re_sign_up').css('display', 'none');
+$('#footer').css('display', 'none');
+$('#fix').css('display', 'none');
 
 }
 
@@ -161,6 +165,7 @@ $.each(data, function(i, field){
       myApp.alert('Welcome', 'Sign in!');
       mainView.router.load({pageName: 'about'});
       $("#home").empty();
+      addhome();
   }else{
       myApp.alert('fail username   password', 'Not Sign in!');
   }
@@ -170,3 +175,36 @@ $.each(data, function(i, field){
 }
 
 });
+
+
+function addhome(){
+/*
+var content='<div class="navbar">  \
+              <div class="navbar-inner">  \
+                <div class="center">Awesome App</div>  \
+              </div>  \
+            </div>  \
+            <!-- /End of Top Navbar-->  \
+<div class="toolbar tabbar"> \
+    <div class="toolbar-inner">  \
+        <a href="#tab1" class="tab-link active">  \
+            <i class="icon demo-icon-1"></i>  \
+        </a>  \
+        <a href="#tab2" class="tab-link">  \
+            <i class="icon demo-icon-2"></i>  \
+        </a>  \
+        <a href="#tab3" class="tab-link">  \
+            <i class="icon demo-icon-3"></i>   \
+        </a>  \
+        <a href="#tab4" class="tab-link">  \
+            <i class="icon demo-icon-4"></i>  \
+        </a>  \
+    </div>  \
+</div>  \
+';
+$("#home").append(content);
+*/
+$('#footer').css('display', 'block');
+$('#fix').css('display', 'block');
+
+}
