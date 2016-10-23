@@ -45,31 +45,9 @@ var intro='<div class="carousel carousel-slider center" data-indicators="true">\
  </div>\
     </div>\
   </div>';
-  $("#view").append(intro);
+$('#menubar').css('display', 'none');  
+$("#view").append(intro);
 $('.carousel.carousel-slider').carousel({full_width: true});
 var test1="height: "+$(document).height()+"px;";
 var test=$(".carousel.carousel-slider.center.initialized").attr('style',test1);
 init();
-
-
-var home='<div class="navbar-fixed"> \
-<nav>\
- <div class="nav-wrapper">\
-   <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>\
- </div>\
-</nav>\
-</div><!--navbar-fixed-->\
-<ul id="slide-out" class="side-nav">\
-<li><div class="userView">\
- <img class="background" src="http://materializecss.com/images/office.jpg">\
- <a href="#!user"><img class="circle" src="http://materializecss.com/images/yuna.jpg"></a>\
- <a href="#!name"><span class="white-text name">John Doe</span></a>\
- <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>\
-</div>\
-</li>\
-<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>\
-<li><a href="#!">Second Link</a></li>\
-<li><div class="divider"></div></li>\
-<li><a class="subheader">Subheader</a></li>\
-<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>\
-</ul><!--slide-out-->';

@@ -77,7 +77,9 @@ if(data_validate){
 $.each(data, function(i, field){
   console.log(data[i].msg_check);
   if(data[i].msg_check=="yes"){
-$.mobile.changePage("#homepage");
+Materialize.toast("yes login", 4000);
+  $("#view").empty();
+$('#menubar').css('display', 'block');  
   }else{
     Materialize.toast("fail username   password", 4000);
   }
