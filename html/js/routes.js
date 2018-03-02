@@ -14,26 +14,41 @@ var routes = [
   // login page
   {
     path: '/login/',
-    el: document.querySelector('.page[data-name="login"]'),
+    url: './pages/login.html',
     name: 'login'
   },
   // sign_up page
   {
-    path: '/signup/',
-    el: document.querySelector('.page[data-name="signup"]'),
-    name: 'signup'
+    path: '/signup/user/:userId',
+    componentUrl: './pages/signup.html',
+    name: 'signup',
   },
-  // About page
+  // menu
   {
-    path: '/about/',
-    el: document.querySelector('.page[data-name="about"]'),
-    name: 'about'
+    path: '/menu/',
+    url: './pages/menu/index.html',
+    tabs: [
+      {
+        path: '/',
+        id: 'menu1',
+         url: './pages/menu/menu1.html',
+      },
+      {
+        path: '/menu2/',
+        id: 'menu2',
+       url: './pages/menu/menu2.html',
+      },
+      {
+        path: '/menu3/',
+        id: 'menu3',
+         url: './pages/menu/menu3.html',
+      },
+    ],
   },
-  // About page
-  {
-    path: '/about2/',
-    el: document.querySelector('.page[data-name="about2"]'),
-    name: 'about'
-  }
+  // Default route, match to all pages (e.g. 404 page)
+{
+  path: '(.*)',
+  url: './pages/404.html',
+},
 
 ];

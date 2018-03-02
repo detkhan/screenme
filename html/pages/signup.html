@@ -1,0 +1,66 @@
+<template>
+<div data-name="signup" class="page">
+
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="title">Awesome App</div>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <!-- Toolbar links -->
+      <a href="/" class="link">Home</a>
+      <a href="/about2/" class="link">Link 2</a>
+    </div>
+  </div>
+    <div class="page-content">
+      {{songs}}
+    </br>
+    {{#each userId}}
+                 <li>{{this}}</li>
+               {{/each}}
+      <div id="content2">
+
+      </div>
+    </div>
+</div>
+</template>
+<script>
+
+  return {
+
+    on:{
+    pageMounted: function (e, page) {
+
+      content="testrsdsdsd";
+      $$("#content2").append(content);
+  console.log('page mounted');
+   },
+        pageInit: function (e, page) {
+  console.log('page init');
+        }
+      },
+    data: function () {
+      var str=this.$route.params;
+      //var data =adddata(str);
+      console.log(str);
+      var test=this.$route.params;
+      var test2=test.userId;
+      var res = test2.split(",");
+      return {
+        userId:res,
+        songs: ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'],
+        authors: ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers']
+      }
+    },
+    methods: {
+      loadMore: function () {
+
+      }
+    }
+  }
+
+</script>
