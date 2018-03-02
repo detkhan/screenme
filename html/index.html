@@ -1,44 +1,210 @@
-﻿<!DOCTYPE html>
- <html>
-	 <head>
-		 <!--Import Google Icon Font-->
-		 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		 <!--Import materialize.css-->
-		 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="css/framework7.min.css">
+    <!-- Path to your custom app styles-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/material-icons.css">
+  </head>
+  <body>
+    <!-- App root element -->
+    <div id="app">
+      <!-- Statusbar overlay -->
+      <div class="statusbar"></div>
+      <!-- Views -->
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
 
-		 <!--Let browser know website is optimized for mobile-->
-		 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	 </head>
-	 <body>
-<div  id="menubar">
-  <div class="navbar-fixed">
-  <nav>
-   <div class="nav-wrapper">
-     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-   </div>
-  </nav>
-  </div><!--navbar-fixed-->
-  <ul id="slide-out" class="side-nav">
-  <li><div class="userView">
-   <img class="background" src="http://materializecss.com/images/office.jpg">
-   <a href="#!user"><img class="circle" src="http://materializecss.com/images/yuna.jpg"></a>
-   <a href="#!name"><span class="white-text name">John Doe</span></a>
-   <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-  </div>
-  </li>
-  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="#!">Second Link</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-  </ul><!--slide-out-->
-</div> <!--menubar-->    
-<div id="view"></div>
-	 </body>
-	 <!--Import jQuery before materialize.js-->
-   <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-	 <script type="text/javascript" src="js/materialize.min.js"></script>
-   <script type="text/javascript" src="js/init.js"></script>
-   <script type="text/javascript" src="js/intro.js"></script>
-	 <script type="text/javascript" src="js/app.js"></script>
- </html>
+
+
+        <!-- Initial Page, "data-name" contains page name -->
+        <div data-name="login" class="page no-navbar no-toolbar no-swipeback">
+                  <div class="page-content login-screen-content">
+            <div class="login-screen-title">Screen Me</div>
+
+            <form class="list" id="my-form">
+      <ul>
+      <li>
+        <div class="item-content item-input">
+          <div class="item-media"><i class="material-icons">mail</i></div>
+          <div class="item-inner">
+            <div class="item-input-wrap">
+              <input type="email" name="email" placeholder="E-mail">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content item-input">
+          <div class="item-media"><i class="material-icons">https</i></div>
+          <div class="item-inner">
+            <div class="item-input-wrap">
+              <input type="password" name="password" placeholder="Password">
+            </div>
+          </div>
+        </div>
+      </li>
+      </ul>
+      </form>
+      <div class="block block-strong row">
+      <div class="col"><a id="signin" class="button button-fill convert-form-to-data" href="#">Sing In</a></div>
+      <div class="col"><a id="signup"  href="#" class="link button button-fill">Sing Up</a></div>
+      </div>
+
+          </div><!-- page content -->
+        </div><!-- page login -->
+
+
+
+
+
+                    <div data-name="signup" class="page no-navbar no-toolbar no-swipeback">
+                                <div class="page-content login-screen-content">
+                                  <div class="login-screen-title">Screen Me</div>
+
+                                  <form class="list" id="my-form2">
+                            <ul>
+                            <li>
+                              <div class="item-content item-input">
+                                <div class="item-media"><i class="material-icons">mail</i></div>
+                                <div class="item-inner">
+                                  <div class="item-input-wrap">
+                                    <input type="email" name="email" placeholder="E-mail">
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="item-content item-input">
+                                <div class="item-media"><i class="material-icons">https</i></div>
+                                <div class="item-inner">
+                                  <div class="item-input-wrap">
+                                    <input type="password" name="password" placeholder="Password">
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="item-content item-input">
+                                <div class="item-media"><i class="material-icons">https</i></div>
+                                <div class="item-inner">
+                                  <div class="item-input-wrap">
+                                    <input type="password" name="re_password" placeholder="Re Password">
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            </ul>
+                            </form>
+                            <div class="block block-strong row">
+                              <div class="col"><a id="resignup"  href="#" class="link button button-fill" >Sing Up</a></div>
+                            </div>
+
+
+                      </div><!-- page content -->
+                    </div><!-- page sign_up -->
+
+
+                    <div data-name="about2" class="page">
+
+                      <!-- Top Navbar -->
+                      <div class="navbar">
+                        <div class="navbar-inner">
+                          <div class="title">Awesome App</div>
+                        </div>
+                      </div>
+
+                      <!-- Toolbar -->
+                      <div class="toolbar">
+                        <div class="toolbar-inner">
+                          <!-- Toolbar links -->
+                          <a href="/about/" class="link">Home</a>
+                          <a href="/signup/" class="link">Link 2</a>
+                        </div>
+                      </div>
+                        <div class="page-content">
+                          ... page about2 ...
+                        </div>
+                    </div>
+
+
+
+        <div data-name="about" class="page">
+
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Awesome App</div>
+            </div>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="toolbar">
+            <div class="toolbar-inner">
+              <!-- Toolbar links -->
+              <a href="/" class="link">Home</a>
+              <a href="/about2/" class="link">Link 2</a>
+            </div>
+          </div>
+            <div class="page-content">
+              ... page about ...
+            </div>
+        </div>
+
+
+
+
+
+        <div data-name="home" class="page">
+
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Awesome App</div>
+            </div>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="toolbar">
+            <div class="toolbar-inner">
+              <!-- Toolbar links -->
+              <a id="about" href="/about/" class="link">Link 1</a>
+              <a id="login" href="/about/" class="link">Link 2</a>
+            </div>
+          </div>
+            <div class="page-content">
+            <div id="content">
+            </div>
+        </div>
+</div>
+
+
+
+
+      </div><!--view-main-->
+
+
+
+
+
+    </div><!--app-->
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript"src="js/routes.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript"src="js/init.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+  </body>
+</html>

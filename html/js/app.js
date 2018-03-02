@@ -1,91 +1,151 @@
-$(document).on("click", "#regis", function() {
-$('#re-password-div').css('display', 'block');
-  $('#re-regis').css('display', 'block');
-$('#login').css('display', 'none');
-$('#regis').css('display', 'none');
 
-var username=$("#username").val();
-var password=$("#password").val();
-var re_password=$("#re-password").val();
-//var data_validate=validateLogin(username,password,re_password);
-});
+//import User from './user.js';
+// Dom7
 
 
-$(document).on("click", "#re-regis", function() {
-var username=$("#username").val();
-var password=$("#password").val();
-var re_password=$("#re-password").val();
-var data_validate=validateLogin(username,password,re_password);
-if(data_validate){
-  if(password==re_password){
-  var page="registration.php";
-  var pack_data={username:username,password:password};
-  var feedhost=url+page+'?jsoncallback=?';
-  $.getJSON( feedhost, {
-    pack_data:pack_data,
-    format: 'json'
-    })
-      .done(function( data ) {
-$.each(data, function(i, field){
-  console.log(data[i].msg_check);
-  if(data[i].msg_check=="add"){
-    $('#regis').css('display', 'none');
-    $('#re-regis').css('display', 'none');
-    $('#re-password-div').css('display', 'none');
-    $('#login').css('display', 'block');
-      Materialize.toast('Complete', 'Registration!', 4000);
-  }else{
-      Materialize.toast('Have User already', 4000);
-  }
 
-});
-    });
-  }else{
-  Materialize.toast('กรอกpasswordกับre password ไม่ตรงกัน', 4000);
-  }
+
+
+class User {
+
+login(data) {
+  var param =data;
+  var url = "http://"+hosturl+"/api/user/login/";
+  app.request.json( url,{parameter:param}
+  ,function( data ) {
+  $.each(data, function(i, field){
+if (field.status=="success") {
+mainView.router.navigate("/");
+var content=field.track;
+$$("#content").append(content);
+}else {
+app.dialog.alert('Password Correct','Screen Me');
+}
+  });
+  });
 }
 
-});
+sign_up(){
 
-function validateLogin(username,password,re_password) {
-  var validate_data=false;
-  if(username!='' || password!='' ||re_password!='')
-  {
-    validate_data=true;
+}
+
+sign_up_regis(){
+var email = $$('#email').val();
+var password = $$('#password').val();
+var re_password = $$('#re_password').val();
+if(password==re_password){
+  var url = "http://"+hosturl+"/screen/api/regisuser.php?jsoncallback=?";
+  $$.getJSON( url, {
+      email:email,
+      password:password,
+      re_password:re_password,}
+,function( data ) {
+  $$.each(data, function(i, field){
+  var msg=field.msg;
+  if(msg=="no"){
+  myApp.alert("Have User", 'Screen Me!');
   }
   else{
-    Materialize.toast("กรุณากรอกข้อมูลให้ครบ", 4000);
+login();
   }
-  return validate_data;
+  });
+  });
+}else{
+myApp.alert('Password Not Match Re-Password', 'Screen Me!');
+}
 }
 
 
 
-$(document).on("click", "#login", function() {
-var username=$("#username").val();
-var password=$("#password").val();
-var data_validate=validateLogin(username,password,password);
-if(data_validate){
-  var page="login.php";
-  var pack_data={username:username,password:password};
-  var feedhost=url+page+'?jsoncallback=?';
-  $.getJSON( feedhost, {
-    pack_data:pack_data,
-    format: 'json'
-    })
-      .done(function( data ) {
-$.each(data, function(i, field){
-  console.log(data[i].msg_check);
-  if(data[i].msg_check=="yes"){
-Materialize.toast("yes login", 4000);
-  $("#view").empty();
-$('#menubar').css('display', 'block');  
-  }else{
-    Materialize.toast("fail username   password", 4000);
-  }
+checklogin(){
+alert("test");
+}//check login
+}//class user
+
+
+
+$$(document).on("click", "#about", function() {
+  console.log("test");
+  var ojb_user=new User();
+  ojb_user.checklogin();
+
+});//click about
+getuser();
+
+
+
+function getuser(){
+if(localStorage.user_id&&localStorage.track)
+{
+user_id = localStorage.user_id;
+track=localStorage.track;
+home();
+//localStorage.clear();
+//alert(user_id);
+}
+else
+{
+//  var ojb_user=new User();
+//  ojb_user.login();
+mainView.router.navigate("/login/");
+}
+}
+
+
+
+$$(document).on("click", "#signup", function() {
+mainView.router.navigate("/signup/");
+});
+
+$$(document).on("click", "#resignup", function() {
+  mainView.router.navigate("/login/");
 
 });
+
+$$(document).on("click", "#signin", function() {
+var formData = app.form.convertToData('#my-form');
+var ojb_user=new User();
+ojb_user.login(formData);
+
+});
+
+
+
+
+$$(document).on("click", "#sign_up_regis", function() {
+  var ojb_user=new User();
+  ojb_user.sign_up_regis();
+
+});//click sign_up_regis
+
+function home() {
+  $$("#content").html("");
+  var content='test';
+  $$("#content").append(content);
+}
+
+$$(document).on("click", "#sign_in", function() {
+  var email = $$('#email').val();
+  var password = $$('#password').val();
+    var url = "http://"+hosturl+"/screen/api/loginuser.php?jsoncallback=?";
+    $$.getJSON( url, {
+        email:email,
+        password:password}
+  ,function( data ) {
+    $$.each(data, function(i, field){
+    var msg=field.msg;
+    if(msg=="no"){
+    myApp.alert("User Or Password Worng", 'Screen Me!');
+    }
+    else{
+      user_id=field.user_id;
+      track=field.track;
+      localStorage.user_id=field.user_id;
+      localStorage.track=field.track;
+      $$("#menu").css('display', 'block');
+      home();
+    }
     });
-}
+    });
 
-});
+});//click sign_in

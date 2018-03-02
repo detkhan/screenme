@@ -1,47 +1,27 @@
 <?php
-require_once("../model/database.php");
-
+/**
+ *
+ */
+require_once("model/user.php");
 class user
 {
-
-
-
-//var_dump($pack_data);
-public function registration($username,$password)
+public function index($param)
 {
-  $join_date=date("Y-m-d H:i:s");
-  $clsMyDB = new MyDatabase();
-  $strCondition2 = "SELECT  *  FROM  user WHERE  `username` ='$username'";
-  $objSelect2 = $clsMyDB->fncSelectRecord($strCondition2);
-
-  if(!$objSelect2)
-  {
-    $strinsert ="INSERT INTO  user(username,password,join_date) VALUES ('$username','$password','$join_date')";
-    $objInsert2 = $clsMyDB->fncInsertRecord($strinsert);
-    $objInsert="add";
-  }
-  else{
-  $objInsert="no";
-
-  }
-  return $objInsert;
-}//function Registration
+  echo "function test";
+  echo "<br>";
+  echo $param;
+}
 
 
-public function login($username,$password)
+public function login($param)
 {
-  $clsMyDB = new MyDatabase();
-  $strCondition2 = "SELECT  *  FROM  user WHERE  `username` ='$username' and `password` ='$password'";
-  $objSelect2 = $clsMyDB->fncSelectRecord($strCondition2);
-  if(!$objSelect2)
-  {
-    $objInsert="no";
-  }
-  else{
-  $objInsert="yes";
+$model=new Users();
+$response=$model->login($param);
+$data= json_encode($response);
+echo $data;
+}
 
-  }
-  return $objInsert;
-}//function login
-}//class
+}
+
+
  ?>

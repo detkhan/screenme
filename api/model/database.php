@@ -1,67 +1,65 @@
-﻿<?php
-	/**** Class Database ****/
-	Class MyDatabase
-	{
-		/**** function connect to database ****/
-		function MyDatabase()
-		{
-$strHost = "localhost";
-$strUser = "root";
-$strPassword = "000000";
-$strDB="screenme";
-				$this->objConnect = mysql_connect($strHost,$strUser,$strPassword);
-				$this->DB = mysql_select_db($strDB);
-				mysql_query('SET NAMES UTF8');
-		}
+<?php
+Class MyDatabase
+{
+  function MyDatabase()
+  {
+    $server="localhost";
+    $user="root";
+    $pass="maysalon007";
+    $database="screenme";
+    $this->con=mysqli_connect($server,$user,$pass,$database);
+    $this->conset=mysqli_set_charset($this->con,'UTF8');
+  }//function MyDatabase
 
-		/**** function insert record ****/
-		function fncInsertRecord($strinsert)
-		{
-				$strSQL = "$strinsert";
-				$objQuery = @mysql_query($strSQL);
-				return $objQuery;
-		}
+  function fncInsertRecord($strinsert)
+  {
+      $strSQL = "$strinsert";
+      $objQuery =mysqli_query($this->con,$strSQL);
+      return $objQuery;
+  }
 
-		/**** function select record ****/
-		function fncSelectRecord($strCondition)
-		{
-				$strSQL = "$strCondition";
-				$objQuery = @mysql_query($strSQL);
-				if(!$objQuery){
-					$num_rows =0;
-				}else{
-					$num_rows = mysql_num_rows($objQuery);
-				}
+  /**** function select record ****/
+  function fncSelectRecord($strCondition)
+  {
+      $strSQL = "$strCondition";
+      $objQuery =mysqli_query($this->con,$strSQL);
+      if(!$objQuery){
+        $num_rows =0;
+      }else{
+        $num_rows = mysqli_num_rows($objQuery);
+      }
 
-				$rowResult = array();
-				if ($num_rows>0) {
-					while($row =mysql_fetch_array($objQuery)){
-					$rowResult[] = $row;
-				}
+      $rowResult = array();
+      if ($num_rows>0) {
+        while($row =mysqli_fetch_assoc($objQuery)){
+        $rowResult[] = $row;
+      }
 
-}
-			return   $rowResult;
-				//return $strSQL;
-		}
+  }
+    return   $rowResult;
+      //return $strSQL;
+  }
 
-		/**** function update record (argument) ****/
-		function fncUpdateRecord($strCondition)
-		{
-				$strSQL ="$strCondition";
-				return @mysql_query($strSQL);
-		}
+  /**** function update record (argument) ****/
+  function fncUpdateRecord($strCondition)
+  {
+      $strSQL ="$strCondition";
+      return mysqli_query($this->con,$strSQL);
+  }
 
-		/**** function delete record ****/
-		function fncDeleteRecord()
-		{
-				$strSQL = "DELETE FROM $this->strTable WHERE $this->strCondition ";
-				return @mysql_query($strSQL);
-		}
+  /**** function delete record ****/
+  function fncDeleteRecord($strCondition)
+  {
+      $strSQL = "$strCondition";
+      return mysqli_query($this->con,$strSQL);
+  }
 
-		/*** end class auto disconnect ***/
-		function __destruct() {
-				return @mysql_close($this->objConnect);
-	    }
-	}
+  /*** end class auto disconnect ***/
+  function __destruct() {
+      return mysqli_close($this->con);
+    }
 
-?>
+
+
+}//class
+ ?>
