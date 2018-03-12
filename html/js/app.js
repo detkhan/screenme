@@ -100,8 +100,10 @@ mainView.router.navigate("/signup/user/"+names);
 });//click sign_up_regis
 
 function adddata(data) {
-  var res = data.split(',');
-  return res;
+  //var res = data.split(',');
+//  return res;
+content="testrsdsdsd";
+$$("#content2").append(content);
 
 }
 

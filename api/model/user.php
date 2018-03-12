@@ -7,6 +7,7 @@ public function login($param)
 {
   $email=$param['email'];
   $password=$param['password'];
+  $password_Md5=md5($password);
   $clsMyDB = new MyDatabase();
     $strCondition2 = "SELECT  *  FROM  user WHERE  `email` ='$email' and`password` = md5('$password')";
      $objSelect2 = $clsMyDB->fncSelectRecord($strCondition2);
@@ -20,7 +21,7 @@ public function login($param)
      }
      else{
        foreach ($objSelect2 as $value) {
-         $track=md5($value['user_id'].$email);
+         $track=md5($value['user_id'].$password_Md5);
          $response[] =
          [
            'track' => $track,
