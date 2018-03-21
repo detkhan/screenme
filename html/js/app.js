@@ -50,6 +50,7 @@ function getuser(){
 if(localStorage.track)
 {
 track=localStorage.track;
+console.log(track);
 home();
 //localStorage.clear();
 //alert(user_id);
@@ -109,7 +110,7 @@ $$("#content2").append(content);
 
 
 function home() {
-
+mainView.router.navigate("/");
   /*
   $$("#content").html("");
   var content='test';

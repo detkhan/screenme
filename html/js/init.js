@@ -2,7 +2,7 @@
 var $$ = Dom7;
 var user_id='';
 var track='';
-var hosturl="127.0.0.1/screennew/";
+var hosturl="127.0.0.1/screenme/";
 // Theme
 var theme = 'auto';
 if (document.location.search.indexOf('theme=') >= 0) {

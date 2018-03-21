@@ -2,8 +2,8 @@ var routes = [
   // Index page
   {
     path: '/',
-    el: document.querySelector('.page[data-name="home"]'),
-    name: 'home',
+    el: document.querySelector('.page[data-name="index"]'),
+    name: 'index',
   },
   // Index page
   {
